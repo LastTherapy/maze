@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world</title>
+    <style>
+        /* Контейнер с двумя частями (левая и правая) */
+        .container {
+            display: flex;
+            flex-direction: column; /* Вертикальное распределение элементов */
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh; /* Высота контейнера - весь экран */
+            padding: 10px;
+        }
+
+        /* Объединённый блок вверху */
+        .combined {
+            margin-top: 10px;
+            width: 100%;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        /* Левая часть для визуализации */
+        .left {
+            width: 48%; /* Ширина 48% от контейнера */
+            background-color: whitesmoke;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Выравнивание по горизонтали */
+        }
+
+        /* Правая часть для вывода данных */
+        .right {
+            width: 48%; /* Ширина 48% от контейнера */
+            background-color: whitesmoke;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        /* Стили для кнопки */
+        input[type="file"] {
+            margin-top: 20px;
+        }
+
+        /* Обёртка для canvas */
+        .canvas-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Добавим небольшой отступ между блоками */
+        .container > div:not(.combined) {
+            margin-top: 10px; /* Отступ сверху между блоками */
+        }
+
+        /* Убираем дополнительный отступ справа для правой части */
+        .right {
+            margin-left: 2%; /* Небольшой отступ с левой стороны */
+        }
+        .upload-label {
+     /* Сделаем label блочным элементом, чтобы они заполнили контейнер */
+            width: 20%;     /* Задаем одинаковую ширину */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center; /* Выравниваем текст по центру */
+            margin-bottom: 10px;
+        }
+
+        .upload-label:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body style="background-color: whitesmoke">
+<div class="container">
+    <!-- Заголовок -->
+    <div class="combined">
+        <h1>School21 Maze project</h1>
+    </div>
+
+    <!-- Контейнер для визуализации и данных -->
+    <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;">
+        <!-- Левая часть для визуализации -->
+        <div class="left">
+            <h2>Visualization</h2>
+            <canvas id="canvas" width="500" height="500" style="border: 2px solid black"></canvas>
+        </div>
+
+        <!-- Правая часть для вывода данных -->
+        <div class="right">
+            <h2>Data</h2>
+            <pre id="dataOutput" class="json-output"></pre>
+        </div>
+    </div>
+
+
+    <div class="combined">
+        <label for="uploadButton" class="upload-label">Загрузить с диска</label>
+        <input type="file" id="uploadButton" accept=".txt,.json" style="display: none;">
+
+        <label for="generateButton" class="upload-label">Сгенерировать</label>
+        <button id="generateButton" class="upload-label" style="display: none">Сгенерировать</button>
+
+        <label for="uploadButton" class="upload-label">Сохранить на диск</label>
+    </div>
+</div>
+
+    <script src="/js/maze.js"></script>
+</body>
+</html>

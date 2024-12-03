@@ -58,8 +58,7 @@ public class MazeServiceImpl implements MazeService{
     }
 
     @Override
-    public Maze loadMaze(String path) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(path));
+    public Maze loadMaze(BufferedReader reader) throws IOException {
         Maze maze = new Maze(printSymbolConfig);
 
         String[] args = reader.readLine().split(" ");
