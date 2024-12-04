@@ -15,6 +15,25 @@ function loadMaze(file) {
         .catch(error => console.error('Error:', error));
 }
 
+function generateMaze(width, height) {
+    const url = `api/maze/generate?width=${width}&height=${height}`; // Параметры передаются через URL
+    fetch(url, {
+        method: 'GET'
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            renderMaze(data);
+            printFormattedJson(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
 function renderMaze(maze) {
     const wallSize = 2;
     let canvas = document.getElementById("canvas");
@@ -60,3 +79,6 @@ function printFormattedJson(data) {
 document.getElementById("uploadButton").onchange = function () {
     loadMaze(this.files[0]);
 }
+    document.getElementById("generateButton").onclick = function () {
+        generateMaze(10, 10);
+    }

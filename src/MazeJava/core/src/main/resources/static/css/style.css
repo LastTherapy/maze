@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Вертикальное распределение элементов */
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh; /* Высота контейнера - весь экран */
+    padding: 10px;
+}
+
+/* Объединённый блок вверху */
+.combined {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+}
+
+/* Левая часть для визуализации */
+.left {
+    width: 48%; /* Ширина 48% от контейнера */
+    background-color: whitesmoke;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание по горизонтали */
+}
+
+/* Правая часть для вывода данных */
+.right {
+    width: 48%; /* Ширина 48% от контейнера */
+    background-color: whitesmoke;
+    padding: 10px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+/* Стили для кнопки */
+input[type="file"] {
+    margin-top: 20px;
+}
+
+/* Обёртка для canvas */
+.canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Добавим небольшой отступ между блоками */
+.container > div:not(.combined) {
+    margin-top: 10px; /* Отступ сверху между блоками */
+}
+
+/* Убираем дополнительный отступ справа для правой части */
+.right {
+    margin-left: 2%; /* Небольшой отступ с левой стороны */
+}
+
+.upload-label {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.upload-label:hover {
+    background-color: #45a049;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Размещаем блоки .left и .right вертикально */
+    .left, .right {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    /* Уменьшаем ширину и отступы для кнопок */
+    .upload-label {
+        width: 100%;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    /* Канвас будет занимать всю ширину */
+    #canvas {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Для блока с кнопками: заголовок и кнопки должны быть на своём месте */
+    .combined {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Для блока с данными (Data) после кнопок */
+    .right {
+        order: 2;
+        width: 90%; /* Для правильного отображения на мобильных устройствах */
+    }
+
+    /* Модификация label, input и button в блоке .combined */
+    .combined label,
+    .combined input,
+    .combined button {
+        width: 90%;
+    }
+
+    /* Для расположения блоков визуализации и данных вертикально */
+    .container > div:not(.combined) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+

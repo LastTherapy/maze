@@ -11,14 +11,14 @@ import java.io.FileReader;
 
 @Component
 public class MazeRunner implements CommandLineRunner {
-    @Autowired
-    Maze maze;
+
     @Autowired
     MazeService mazeService;
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Hello MAze Runner");
+        Maze maze = mazeService.generateMaze(10, 10);
 //        BufferedReader reader = new BufferedReader(new FileReader("/Users/helllomind/schoo21/A1_Maze_Java-1/src/MazeJava/core/src/main/resources/example_maze.txt"));
 //        mazeService.loadMaze(reader);
     }
