@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import ru.dobrochan.model.Maze;
 import ru.dobrochan.service.MazeService;
+import ru.dobrochan.view.ConsoleView;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,6 +15,8 @@ public class MazeRunner implements CommandLineRunner {
 
     @Autowired
     MazeService mazeService;
+    @Autowired
+    ConsoleView consoleView;
 
     @Override
     public void run(String... args) throws Exception {
