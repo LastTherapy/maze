@@ -23,6 +23,6 @@ public class MazeRunner implements CommandLineRunner {
         System.out.println("Hello MAze Runner");
         Maze maze = mazeService.generateMaze(10, 10);
 //        BufferedReader reader = new BufferedReader(new FileReader("/Users/helllomind/schoo21/A1_Maze_Java-1/src/MazeJava/core/src/main/resources/example_maze.txt"));
-//        mazeService.loadMaze(reader);
+        consoleView.print(maze);
     }
 }
