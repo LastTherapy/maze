@@ -1,5 +1,6 @@
 package ru.dobrochan.service;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.dobrochan.model.Maze;
@@ -11,6 +12,7 @@ import java.io.*;
 public class MazeServiceImpl implements MazeService{
 
     private final MazeGenerator mazeGenerator;
+    private Maze lastMaze;
 
     @Autowired
     public MazeServiceImpl(MazeGenerator mazeGenerator) {
@@ -20,8 +22,10 @@ public class MazeServiceImpl implements MazeService{
 
     @Override
     public Maze generateMaze(int width, int height) {
-        return mazeGenerator.generateMaze(width, height);
+        lastMaze = mazeGenerator.generateMaze(width, height);
+        return lastMaze;
     }
+
 
     @Override
     public void saveMaze(Maze maze, String path) throws IOException {
@@ -61,8 +65,11 @@ public class MazeServiceImpl implements MazeService{
 
         maze.setMatrixA(matrixA);
         maze.setMatrixB(matrixB);
+        lastMaze = maze;
         return maze;
     }
+
+
 
     private int[][] loadMatrix(BufferedReader reader, int height, int width) throws IOException {
         int[][] matrix = new int[height][width];
@@ -78,5 +85,13 @@ public class MazeServiceImpl implements MazeService{
     @Override
     public MazeSolution solveMaze(Maze maze) {
         return null;
+    }
+
+    @Override
+    public String getMazeString() {
+        if (lastMaze == null) {
+            return "";
+        }
+        else return lastMaze.toString();
     }
 }

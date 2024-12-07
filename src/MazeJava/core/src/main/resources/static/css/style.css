@@ -13,14 +13,30 @@ body {
     padding: 10px;
 }
 
-/* Объединённый блок вверху */
+/* Для заголовка */
 .combined {
-    margin-top: 10px;
-    width: 100%;
-    justify-content: space-between;
-    text-align: center;
+    display: flex;
+    flex-direction: row; /* Вертикальное выравнивание */
+    align-items: center;
+    margin-bottom: 20px;
 }
 
+/* Для каждой строки с кнопками */
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Выравнивание по вертикали */
+    justify-content: center; /* Выравнивание по горизонтали */
+    gap: 20px; /* Расстояние между элементами */
+    margin-top: 10px;
+}
+
+/* Настройки для изображения */
+#generation img {
+    margin-right: 5px;
+}
 /* Левая часть для визуализации */
 .left {
     width: 48%; /* Ширина 48% от контейнера */
@@ -66,21 +82,62 @@ input[type="file"] {
     margin-left: 2%; /* Небольшой отступ с левой стороны */
 }
 
-.upload-label {
-    width: 20%;
+.button-label {
+    display: inline-flex;
+    /*display: inline-flex;*/
+    width: 200px;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    border: 1px solid #000000;
+    /*font-size: 16px;*/
     text-align: center;
-    margin-bottom: 10px;
+    align-items: center;
 }
 
-.upload-label:hover {
+
+.button-label:hover {
     background-color: #45a049;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+input {
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+
+
 
 /* Медиазапросы для мобильных устройств */
 @media (max-width: 768px) {

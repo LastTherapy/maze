@@ -8,8 +8,6 @@ import java.io.IOException;
 
 public interface MazeService {
 
-
-
     Maze generateMaze(int width, int height);
 
     void saveMaze(Maze maze, String path) throws IOException;
@@ -17,4 +15,6 @@ public interface MazeService {
     Maze loadMaze(BufferedReader reader) throws IOException;
 
     MazeSolution solveMaze(Maze maze);
+
+    String getMazeString();
 }
